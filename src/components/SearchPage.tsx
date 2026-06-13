@@ -2,14 +2,17 @@ import { useMemo, useState } from 'react';
 import HealthSearch from './HealthSearch';
 import { searchCatalog } from '../data/mockData';
 
+// Page container for disease/treatment search; owns query state and filters the catalog
 const SearchPage = () => {
   const [query, setQuery] = useState('');
 
+  // Filter runs on every keystroke; memoized so the catalog isn't re-scanned on unrelated renders
   const filteredResults = useMemo(
     () =>
-      searchCatalog.filter((item) =>
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.summary.toLowerCase().includes(query.toLowerCase())
+      searchCatalog.filter(
+        (item) =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.summary.toLowerCase().includes(query.toLowerCase())
       ),
     [query]
   );

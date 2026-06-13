@@ -1,5 +1,6 @@
 import { coverageInsights } from '../data/mockData';
 
+// Displays historical coverage likelihood for common service categories
 const CoveragePage = () => (
   <div className="page-content">
     <div className="page-heading">
@@ -7,6 +8,7 @@ const CoveragePage = () => (
       <p>Review the likelihood of insurance coverage for common healthcare services and treatments.</p>
     </div>
 
+    {/* One card per coverage category with a chance percentage and provider context */}
     <div className="coverage-grid">
       {coverageInsights.map((insight) => (
         <article key={insight.id} className="coverage-card">

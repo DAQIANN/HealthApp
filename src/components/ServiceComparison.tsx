@@ -1,3 +1,6 @@
+// Presentational component: checkbox toggle list + side-by-side service detail cards.
+// Heading/description are owned by ComparisonPage so they aren't duplicated here.
+
 import { Service } from '../data/mockData';
 
 type ServiceComparisonProps = {
@@ -7,15 +10,12 @@ type ServiceComparisonProps = {
 };
 
 const ServiceComparison = ({ services, selectedIds, onToggle }: ServiceComparisonProps) => {
+  // Derive selected subset on each render — avoids keeping a second copy in state
   const selectedServices = services.filter((service) => selectedIds.includes(service.id));
 
   return (
     <div className="service-comparison">
-      <div className="comparison-header">
-        <h2>Compare healthcare services</h2>
-        <p>Select the services you want to evaluate side by side.</p>
-      </div>
-
+      {/* Checkbox list: lets the user pick which services to compare */}
       <div className="service-toggle-list">
         {services.map((service) => (
           <label key={service.id} className="service-toggle">
@@ -29,6 +29,7 @@ const ServiceComparison = ({ services, selectedIds, onToggle }: ServiceCompariso
         ))}
       </div>
 
+      {/* Detail cards for each selected service, or an empty state prompt */}
       <div className="comparison-cards">
         {selectedServices.length > 0 ? (
           selectedServices.map((service) => (

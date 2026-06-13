@@ -1,14 +1,16 @@
 import { useState } from 'react';
 
+// Placeholder AI cost predictor — simulates an estimate response until a real model is wired in
 const AICoverageEstimator = () => {
   const [estimateInput, setEstimateInput] = useState('Telehealth Consultation');
   const [aiEstimate, setAiEstimate] = useState(
     'Enter a procedure or service and click estimate to see an AI-driven placeholder coverage recommendation.'
   );
 
+  // Produces a static simulated response that includes the user's input
   const handleEstimate = () => {
     setAiEstimate(
-      `AI coverage estimate for “${estimateInput}”: likely covered at about 78%, with an expected out-of-pocket range of $90–$190 depending on plan specifics. This is a simulated placeholder result.`
+      `AI coverage estimate for "${estimateInput}": likely covered at about 78%, with an expected out-of-pocket range of $90–$190 depending on plan specifics. This is a simulated placeholder result.`
     );
   };
 
@@ -20,6 +22,7 @@ const AICoverageEstimator = () => {
       </div>
 
       <section className="ai-estimator-card">
+        {/* Input row: procedure name + trigger button */}
         <div className="ai-estimator-controls">
           <label className="ai-input-label">
             Procedure or treatment
@@ -34,6 +37,7 @@ const AICoverageEstimator = () => {
           </button>
         </div>
 
+        {/* Output panel: shows the latest estimate or the initial prompt */}
         <div className="ai-estimate-output">
           <p>{aiEstimate}</p>
         </div>

@@ -1,3 +1,4 @@
+// Single-button toggle; flips between light and dark mode via aria-label and icon
 type ThemeToggleProps = {
   theme: 'light' | 'dark';
   onToggle: () => void;

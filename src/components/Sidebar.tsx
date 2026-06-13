@@ -1,3 +1,7 @@
+// NOTE: Sidebar is not currently used — the app navigates via the top nav bar in App.tsx.
+// Kept here in case a collapsible sidebar layout is added later.
+// Also missing the 'ai' tab that App.tsx has; update TabKey if this is reactivated.
+
 type TabKey = 'overview' | 'compare' | 'search' | 'coverage';
 
 type SidebarProps = {

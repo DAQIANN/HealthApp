@@ -1,19 +1,25 @@
 import { plans } from '../data/mockData';
 
+// Derived summary metrics — computed from mock data so they stay in sync as data changes
+const avgMonthlyCost = Math.round(plans.reduce((sum, p) => sum + p.monthlyCost, 0) / plans.length);
+const topEffectivenessScore = Math.max(...plans.map((p) => p.effectivenessScore));
+
+// Overview page: high-level stats and a card for each available plan
 const Dashboard = () => (
   <section className="dashboard">
     <div className="dashboard-grid">
+      {/* Summary card: single-number KPIs drawn from the plan dataset */}
       <article className="summary-card">
         <h2>Cost effectiveness at a glance</h2>
         <p>Compare plans, services, and clinical support options to identify best value and expected outcomes.</p>
         <div className="metric-list">
           <div>
             <span className="metric-label">Average plan cost</span>
-            <strong>$133</strong>
+            <strong>${avgMonthlyCost}</strong>
           </div>
           <div>
             <span className="metric-label">Top score</span>
-            <strong>92%</strong>
+            <strong>{topEffectivenessScore}%</strong>
           </div>
           <div>
             <span className="metric-label">Plans tracked</span>
@@ -22,6 +28,7 @@ const Dashboard = () => (
         </div>
       </article>
 
+      {/* Plan list: one card per plan with an effectiveness progress bar */}
       <article className="plan-list">
         <h2>Plan comparison</h2>
         <div className="cards">

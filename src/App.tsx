@@ -6,6 +6,7 @@ import SearchPage from './components/SearchPage';
 import CoveragePage from './components/CoveragePage';
 import AICoverageEstimator from './components/AICoverageEstimator';
 
+// Ordered list of top-level navigation tabs; order here controls render order in the nav bar
 const pageTabs = [
   { key: 'overview' as const, label: 'Overview' },
   { key: 'compare' as const, label: 'Compare Services' },
@@ -14,12 +15,17 @@ const pageTabs = [
   { key: 'ai' as const, label: 'Cost Predictor' },
 ];
 
+type PageKey = (typeof pageTabs)[number]['key'];
+
+// Root component: owns global theme and active-page state, renders the shell layout
 const App = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [activePage, setActivePage] = useState<'overview' | 'compare' | 'search' | 'coverage' | 'ai'>('overview');
+  const [activePage, setActivePage] = useState<PageKey>('overview');
 
+  // CSS class applied to the outermost element to drive theme-scoped custom properties
   const themeClass = useMemo(() => (theme === 'dark' ? 'theme-dark' : 'theme-light'), [theme]);
 
+  // Swaps in the correct page component based on the active nav tab
   const renderPage = () => {
     switch (activePage) {
       case 'compare':
@@ -37,6 +43,7 @@ const App = () => {
 
   return (
     <div className={`app-shell ${themeClass}`}>
+      {/* Static branding header */}
       <header className="app-header">
         <div className="header-left">
           <div className="header-title">
@@ -49,6 +56,7 @@ const App = () => {
         </div>
       </header>
 
+      {/* Top navigation: tab buttons + theme toggle */}
       <nav className="top-navigation" aria-label="Main navigation">
         <div className="nav-tab-group">
           {pageTabs.map((tab) => (
@@ -67,6 +75,7 @@ const App = () => {
         </div>
       </nav>
 
+      {/* Page content area — swapped by renderPage() */}
       <main className="content-area">{renderPage()}</main>
     </div>
   );

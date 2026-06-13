@@ -1,3 +1,6 @@
+// Presentational component: renders a search input and a filtered list of results.
+// Heading/description are owned by SearchPage so they aren't duplicated here.
+
 type HealthSearchResult = {
   id: number;
   title: string;
@@ -13,11 +16,7 @@ type HealthSearchProps = {
 
 const HealthSearch = ({ query, onQueryChange, results }: HealthSearchProps) => (
   <div className="health-search">
-    <div className="comparison-header">
-      <h2>Search diseases and treatments</h2>
-      <p>Explore conditions and relevant treatment options by keyword.</p>
-    </div>
-
+    {/* Controlled search input — filtering logic lives in SearchPage */}
     <label className="search-input-label">
       <span className="sr-only">Search</span>
       <input
@@ -28,6 +27,7 @@ const HealthSearch = ({ query, onQueryChange, results }: HealthSearchProps) => (
       />
     </label>
 
+    {/* Result cards, or an empty state when nothing matches */}
     <div className="search-list">
       {results.length > 0 ? (
         results.map((item) => (
