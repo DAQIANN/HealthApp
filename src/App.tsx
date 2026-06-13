@@ -6,6 +6,7 @@ import SearchPage from './components/SearchPage';
 import CoveragePage from './components/CoveragePage';
 import AICoverageEstimator from './components/AICoverageEstimator';
 import Disclaimer from './components/Disclaimer';
+import TermsOfService from './components/TermsOfService';
 
 // Ordered list of top-level navigation tabs; order here controls render order in the nav bar
 const pageTabs = [
@@ -18,10 +19,20 @@ const pageTabs = [
 
 type PageKey = (typeof pageTabs)[number]['key'];
 
-// Root component: owns global theme and active-page state, renders the shell layout
+// Root component: owns global theme, active-page, and ToS acceptance state
 const App = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [activePage, setActivePage] = useState<PageKey>('overview');
+
+  // Initialise from localStorage so returning users aren't shown the modal again
+  const [tosAccepted, setTosAccepted] = useState<boolean>(
+    () => localStorage.getItem('tos-accepted') === 'true'
+  );
+
+  const handleTosAccept = () => {
+    localStorage.setItem('tos-accepted', 'true');
+    setTosAccepted(true);
+  };
 
   // CSS class applied to the outermost element to drive theme-scoped custom properties
   const themeClass = useMemo(() => (theme === 'dark' ? 'theme-dark' : 'theme-light'), [theme]);
@@ -44,6 +55,8 @@ const App = () => {
 
   return (
     <div className={`app-shell ${themeClass}`}>
+      {/* Blocks the app on first visit until the user accepts the terms */}
+      {!tosAccepted && <TermsOfService onAccept={handleTosAccept} />}
       {/* Static branding header */}
       <header className="app-header">
         <div className="header-left">
