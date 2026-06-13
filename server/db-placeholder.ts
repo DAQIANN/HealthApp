@@ -20,6 +20,7 @@ export type DatabaseConfig = {
   databaseUrl: string;
 };
 
+// TODO: remove the fallback default once DATABASE_URL is set in the deployment environment
 export const dbConfig: DatabaseConfig = {
   databaseUrl: process.env.DATABASE_URL ?? 'postgres://user:password@localhost:5432/healthcare',
 };

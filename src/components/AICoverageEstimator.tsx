@@ -7,7 +7,7 @@ const AICoverageEstimator = () => {
     'Enter a procedure or service and click estimate to see an AI-driven placeholder coverage recommendation.'
   );
 
-  // Produces a static simulated response that includes the user's input
+  // TODO: replace with a real POST /api/estimate call (or Claude API) that takes estimateInput and returns coverage likelihood + cost range
   const handleEstimate = () => {
     setAiEstimate(
       `AI coverage estimate for "${estimateInput}": likely covered at about 78%, with an expected out-of-pocket range of $90–$190 depending on plan specifics. This is a simulated placeholder result.`

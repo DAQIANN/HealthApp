@@ -36,7 +36,7 @@ export type CoverageInsight = {
   details: string;
 };
 
-// Static mock plans — replace with API fetch when backend is ready
+// TODO: replace with GET /api/plans once the backend is ready
 export const plans: Plan[] = [
   {
     id: 1,
@@ -61,7 +61,7 @@ export const plans: Plan[] = [
   },
 ];
 
-// Static mock services — replace with API fetch when backend is ready
+// TODO: replace with GET /api/services once the backend is ready
 export const services: Service[] = [
   {
     id: 1,
@@ -105,7 +105,7 @@ export const services: Service[] = [
   },
 ];
 
-// Static mock search entries — replace with API fetch when backend is ready
+// TODO: replace with GET /api/search?query=... once the backend is ready
 export const searchCatalog: SearchResult[] = [
   {
     id: 1,
@@ -133,7 +133,7 @@ export const searchCatalog: SearchResult[] = [
   },
 ];
 
-// Static mock coverage insights — replace with API fetch when backend is ready
+// TODO: replace with GET /api/coverage once the backend is ready
 export const coverageInsights: CoverageInsight[] = [
   {
     id: 1,

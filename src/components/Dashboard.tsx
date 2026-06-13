@@ -1,6 +1,6 @@
 import { plans } from '../data/mockData';
 
-// Derived summary metrics — computed from mock data so they stay in sync as data changes
+// TODO: these metrics should come from the API once the backend is ready; for now derived from mock data
 const avgMonthlyCost = Math.round(plans.reduce((sum, p) => sum + p.monthlyCost, 0) / plans.length);
 const topEffectivenessScore = Math.max(...plans.map((p) => p.effectivenessScore));
 
