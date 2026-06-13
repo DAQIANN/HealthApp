@@ -5,6 +5,7 @@ import ComparisonPage from './components/ComparisonPage';
 import SearchPage from './components/SearchPage';
 import CoveragePage from './components/CoveragePage';
 import AICoverageEstimator from './components/AICoverageEstimator';
+import Disclaimer from './components/Disclaimer';
 
 // Ordered list of top-level navigation tabs; order here controls render order in the nav bar
 const pageTabs = [
@@ -77,6 +78,9 @@ const App = () => {
 
       {/* Page content area — swapped by renderPage() */}
       <main className="content-area">{renderPage()}</main>
+
+      {/* Legal footer — shown on every page */}
+      <Disclaimer />
     </div>
   );
 };

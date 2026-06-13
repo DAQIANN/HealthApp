@@ -1,7 +1,6 @@
-import { plans } from '../data/mockData';
+import { plans, scoreLabel, costTier } from '../data/mockData';
 
 // TODO: these metrics should come from the API once the backend is ready; for now derived from mock data
-const avgMonthlyCost = Math.round(plans.reduce((sum, p) => sum + p.monthlyCost, 0) / plans.length);
 const topEffectivenessScore = Math.max(...plans.map((p) => p.effectivenessScore));
 
 // Overview page: high-level stats and a card for each available plan
@@ -15,11 +14,11 @@ const Dashboard = () => (
         <div className="metric-list">
           <div>
             <span className="metric-label">Average plan cost</span>
-            <strong>${avgMonthlyCost}</strong>
+            <strong>Varies by plan</strong>
           </div>
           <div>
-            <span className="metric-label">Top score</span>
-            <strong>{topEffectivenessScore}%</strong>
+            <span className="metric-label">Top rating</span>
+            <strong>{scoreLabel(topEffectivenessScore)}</strong>
           </div>
           <div>
             <span className="metric-label">Plans tracked</span>
@@ -36,12 +35,12 @@ const Dashboard = () => (
             <div key={plan.id} className="plan-card">
               <div className="plan-card-header">
                 <h3>{plan.name}</h3>
-                <span className="cost">${plan.monthlyCost}/mo</span>
+                <span className="cost">Cost tier: {costTier(plan.monthlyCost)}</span>
               </div>
               <p>{plan.description}</p>
               <div className="progress-row">
                 <span>Effectiveness</span>
-                <strong>{plan.effectivenessScore}%</strong>
+                <strong>{scoreLabel(plan.effectivenessScore)}</strong>
               </div>
               <div className="progress-bar">
                 <div style={{ width: `${plan.effectivenessScore}%` }} />

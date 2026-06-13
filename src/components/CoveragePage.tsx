@@ -1,4 +1,4 @@
-import { coverageInsights } from '../data/mockData';
+import { coverageInsights, scoreLabel } from '../data/mockData';
 
 // Displays historical coverage likelihood for common service categories
 const CoveragePage = () => (
@@ -14,7 +14,7 @@ const CoveragePage = () => (
         <article key={insight.id} className="coverage-card">
           <div className="coverage-card-header">
             <h3>{insight.title}</h3>
-            <span className="coverage-score">{insight.coverageChance}%</span>
+            <span className="coverage-score">{scoreLabel(insight.coverageChance)}</span>
           </div>
           <p className="coverage-provider">Provider: {insight.provider}</p>
           <p>{insight.details}</p>

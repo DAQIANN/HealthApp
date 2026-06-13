@@ -10,7 +10,7 @@ const AICoverageEstimator = () => {
   // TODO: replace with a real POST /api/estimate call (or Claude API) that takes estimateInput and returns coverage likelihood + cost range
   const handleEstimate = () => {
     setAiEstimate(
-      `AI coverage estimate for "${estimateInput}": likely covered at about 78%, with an expected out-of-pocket range of $90–$190 depending on plan specifics. This is a simulated placeholder result.`
+      `Simulated estimate for "${estimateInput}": coverage likelihood is rated High, with out-of-pocket costs that vary by plan tier. This is a placeholder result — no real coverage determination has been made.`
     );
   };
 
@@ -19,6 +19,13 @@ const AICoverageEstimator = () => {
       <div className="page-heading">
         <h2>Cost Predictor</h2>
         <p>Estimate coverage likelihood and cost impact for treatments using a placeholder AI model.</p>
+      </div>
+
+      {/* Inline warning: AI outputs on this page are simulations, not real coverage rulings */}
+      <div className="ai-warning" role="alert">
+        <strong>Simulated estimates only.</strong> Results are not a coverage guarantee and should
+        not be used for medical or financial decisions. Verify all coverage details directly with
+        your insurer.
       </div>
 
       <section className="ai-estimator-card">

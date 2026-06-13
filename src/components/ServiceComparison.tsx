@@ -1,7 +1,7 @@
 // Presentational component: checkbox toggle list + side-by-side service detail cards.
 // Heading/description are owned by ComparisonPage so they aren't duplicated here.
 
-import { Service } from '../data/mockData';
+import { Service, scoreLabel, costTier } from '../data/mockData';
 
 type ServiceComparisonProps = {
   services: Service[];
@@ -39,16 +39,16 @@ const ServiceComparison = ({ services, selectedIds, onToggle }: ServiceCompariso
               <p>{service.description}</p>
               <ul>
                 <li>
-                  <strong>Monthly cost:</strong> ${service.monthlyCost}
+                  <strong>Cost tier:</strong> {costTier(service.monthlyCost)}
                 </li>
                 <li>
-                  <strong>Effectiveness:</strong> {service.effectiveness}%
+                  <strong>Effectiveness:</strong> {scoreLabel(service.effectiveness)}
                 </li>
                 <li>
-                  <strong>Patient satisfaction:</strong> {service.satisfaction}%
+                  <strong>Patient satisfaction:</strong> {scoreLabel(service.satisfaction)}
                 </li>
                 <li>
-                  <strong>Coverage likelihood:</strong> {service.coverageLikelihood}%
+                  <strong>Coverage likelihood:</strong> {scoreLabel(service.coverageLikelihood)}
                 </li>
               </ul>
             </article>

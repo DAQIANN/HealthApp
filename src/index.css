@@ -641,6 +641,40 @@ h1 {
     margin: 0.25rem 0 0.75rem;
   }
 
+  /* Site-wide legal footer */
+  .app-disclaimer {
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--surface);
+  }
+
+  .disclaimer-text {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 90ch;
+  }
+
+  /* Inline warning banner used on the AI estimator page */
+  .ai-warning {
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.35);
+    border-radius: 0.95rem;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.88rem;
+    color: inherit;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .theme-dark .ai-warning {
+    background: rgba(234, 179, 8, 0.08);
+    border-color: rgba(234, 179, 8, 0.25);
+  }
+
   @media (max-width: 960px) {
     .dashboard-grid {
       grid-template-columns: 1fr;

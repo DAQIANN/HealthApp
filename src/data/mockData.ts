@@ -133,6 +133,21 @@ export const searchCatalog: SearchResult[] = [
   },
 ];
 
+// Converts a 0–100 score to a qualitative label for display (avoids showing specific % claims)
+export const scoreLabel = (score: number): string => {
+  if (score >= 85) return 'Very High';
+  if (score >= 70) return 'High';
+  if (score >= 55) return 'Moderate';
+  return 'Low';
+};
+
+// Converts a monthly USD cost to a cost-tier symbol for display (avoids showing specific $ claims)
+export const costTier = (monthlyUsd: number): string => {
+  if (monthlyUsd >= 150) return '$$$';
+  if (monthlyUsd >= 100) return '$$';
+  return '$';
+};
+
 // TODO: replace with GET /api/coverage once the backend is ready
 export const coverageInsights: CoverageInsight[] = [
   {
